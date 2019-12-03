@@ -1,0 +1,76 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="NCBOnlineBank.Pages.Main" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <script src="/Scripts/jquery-3.4.1.min.js"></script>
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <link href="/Styles/Table.css" rel="stylesheet" />
+    <link href="/Styles/Style.css" rel="stylesheet" />
+    <link href="/Content/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="">
+            <div id="mySidenav" class="sidenav">
+                <a class="navbar-brand" href="/Pages/Site/Home.aspx">
+                    <img src="/Images/Logo/ncblogo.png"
+                        style="height: 30px; width: 80px" /></a>
+                <span class="navbar-text"></span>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="/Pages/Site/About Us.aspx">About</a>
+                <a href="/Pages/Site/Contact Us.aspx">Contact</a>
+                <a href="/Pages/Payment/BillPayments.aspx">Make Payment</a>
+                <a href="/Pages/Payment/Edit Payee.aspx">Edit Payee</a>
+
+                <div style="left: 0; color: white;">
+                    <asp:LoginView ID="LoginView1" runat="server">
+                        <LoggedInTemplate>
+                            <div>
+                                <span style="font-weight: bold">Welcome </span>
+                                <asp:LoginName ID="LoginName1" runat="server" />
+                                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Pages/Account/LogOut.aspx" />
+                            </div>
+                        </LoggedInTemplate>
+                        <AnonymousTemplate>
+                            <span style="font-weight: bold">Welcome Guest</span>
+                            <a style="padding-left: 10px;" title="Log In" href="/Pages/Account/Login.aspx">Log In</a>
+                        </AnonymousTemplate>
+                    </asp:LoginView>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="main">
+            <span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776; Menu</span>
+        </div>
+
+        <div>
+            <div class="site-content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+
+</body>
+
+
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.body.style.backgroundColor = "rgba(0,0,0,0.0)";
+    }
+</script>
+</html>
